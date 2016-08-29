@@ -1,0 +1,16 @@
+en:
+  age:
+    stages:
+      child: 'Child'
+      teenager: 'Teenager'
+      early: "Early %{age}'s"
+      mid: "Mid %{age}'s"
+      late: "Late %{age}'s"
+    error:
+      nil: 'Age cannot be nil'
+      non-numerical: 'Age must be a number'
+  dob:
+    error:
+      nil: 'DOB cannot be nil'
+      future: 'DOB must be in the past'
+      non-date: 'Invalid DOB provided'
