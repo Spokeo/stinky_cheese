@@ -17,11 +17,11 @@ class Age
   private
 
   def agify(age)
-    raise StinkyCheese::InvalidAgeError, I18n.t('en.age.nil') if age.nil?
+    raise StinkyCheese::InvalidAgeError, I18n.t('en.age.error.nil') if age.nil?
     begin
       Float(age).round
     rescue ArgumentError
-      raise StinkyCheese::InvalidAgeError, I18n.t('en.age.non-numerical')
+      raise StinkyCheese::InvalidAgeError, I18n.t('en.age.error.non-numerical')
     end
   end
 end

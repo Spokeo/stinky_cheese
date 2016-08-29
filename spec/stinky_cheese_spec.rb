@@ -50,12 +50,6 @@ describe StinkyCheese do
         expect(StinkyCheese.age_from_dob dob).to eq 2
       end
     end
-    context 'dob is after today' do
-      it 'raises StinkyCheese::InvalidDobError' do
-        dob = Date.parse('2001-12-08')
-        expect { StinkyCheese.age_from_dob dob }.to raise_error StinkyCheese::InvalidDobError
-      end
-    end
     context 'dob is today' do
       it 'returns 0' do
         dob = base_day
@@ -69,15 +63,22 @@ describe StinkyCheese do
       end
     end
     context 'dob is nil' do
-      it 'raises InvalidDobError' do
+      it 'raises InvalidDateError' do
         dob = nil
-        expect { StinkyCheese.age_from_dob dob }.to raise_error StinkyCheese::InvalidDobError
+        expect { StinkyCheese.age_from_dob dob }.to raise_error StinkyCheese::InvalidDateError
       end
     end
     context 'dob is an invalid object' do
-      it 'raises InvalidDobError' do
+      it 'raises InvalidDateError' do
         dob = {}
-        expect { StinkyCheese.age_from_dob dob }.to raise_error StinkyCheese::InvalidDobError
+        expect { StinkyCheese.age_from_dob dob }.to raise_error StinkyCheese::InvalidDateError
+      end
+    end
+    context 'dod is supplied' do
+      it 'calculates the time between the dob and the dod' do
+        dob = Date.parse('1992-02-29')
+        dod = Date.parse('1996-12-09')
+        expect(StinkyCheese.age_from_dob(dob, dod)).to eq 4
       end
     end
   end
@@ -95,9 +96,9 @@ describe StinkyCheese do
       end
     end
     context 'age is below 0' do
-      it 'raises StinkyCheese::InvalidDobError' do
+      it 'raises StinkyCheese::InvalidDateError' do
         age = -1
-        expect { StinkyCheese.age_from_dob age }.to raise_error StinkyCheese::InvalidDobError
+        expect { StinkyCheese.age_from_dob age }.to raise_error StinkyCheese::InvalidDateError
       end
     end
     context 'age is 0' do

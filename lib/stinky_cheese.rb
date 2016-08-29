@@ -1,11 +1,11 @@
 require 'stinky_cheese/version'
-require 'date_of_birth'
+require 'life_event_date'
 require 'age'
 module StinkyCheese
-  def self.age_from_dob(dob)
-    date_of_birth = DateOfBirth.new(dob)
-    now = Time::now
-    now.year - date_of_birth.date.year - date_of_birth.birthday_is_in_future?
+  def self.age_from_dob(dob, dod = Time::now)
+    date_of_birth = LifeEventDate.new(dob)
+    date_of_death = LifeEventDate.new(dod)
+    date_of_death.date.year - date_of_birth.date.year - date_of_birth.in_future?
   end
 
   def self.stage_of_life(age)

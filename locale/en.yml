@@ -9,8 +9,7 @@ en:
     error:
       nil: 'Age cannot be nil'
       non-numerical: 'Age must be a number'
-  dob:
+  life-event-date:
     error:
-      nil: 'DOB cannot be nil'
-      future: 'DOB must be in the past'
-      non-date: 'Invalid DOB provided'
+      nil: 'DOB/DOD cannot be nil'
+      non-date: 'Invalid DOB/DOD provided'

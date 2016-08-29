@@ -20,6 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
+### age_from_dob
+
 Calculate the age given a date of birth:
 
 ```ruby
@@ -32,6 +34,17 @@ StinkyCheese.age_from_dob can handle inputs that are either String, Date, DateTi
 dob = '1993-12-09'
 StinkyCheese.age_from_dob(dob)
 ```
+
+The date of death parameter can also be set to calculate the age a person died at:
+
+```ruby
+dob = '1931-01-09'
+dod = '1971-12-10'
+StinkyCheese.age_from_dob(dob, dod)
+```
+This will yield 40
+
+### stage_of_life
 
 StinkyCheese also gives a vague age teaser given an age. For example:
 
